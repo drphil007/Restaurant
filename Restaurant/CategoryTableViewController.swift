@@ -1,5 +1,5 @@
 //
-//  CategoryTableTableViewController.swift
+//  CategoryTableViewController.swift
 //  Restaurant
 //
 //  Created by Philine Wairata on 11/05/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryTableTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController {
 
     
     var categories = [String]()
@@ -42,17 +42,19 @@ class CategoryTableTableViewController: UITableViewController {
         return cell
     }
 
+    /// Configures text labels.
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let categoryString = categories[indexPath.row]
         cell.textLabel?.text = categoryString.capitalized
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "MenuSegue" {
-//            let menuTableViewController = segue.destination as! MenuTableViewController
-//            let index = tableView.indexPathForSelectedRow!.row
-//            menuTableViewController.category = categories[index]
-//        }
-//    }
+ 
+    /// Method for segue to menuTableViewController.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MenuSegue" {
+            let menuTableViewController = segue.destination as! MenuTableViewController
+            let index = tableView.indexPathForSelectedRow!.row
+            menuTableViewController.category = categories[index]
+        }
+    }
 
 }
